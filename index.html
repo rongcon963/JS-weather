@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>Weather App</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Load external CSS styles -->
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <h1>My awesome space</h1>
+        <div class="container">
+            <div class="main-section">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" name="search-city" id="search-input" placeholder="Tìm kiếm thành phố ...">
+                    <span class="microphone">
+                        <i class="fas fa-microphone"></i>
+                        <span class="recording-icon"></span>
+                    </span>
+                </div>
+                <div class="info-wrapper">
+                    <p class="city-name">--</p>
+                    <p class="weather-state">--</p>
+                    <img src="http://openweathermap.org/img/wn/03d@2x.png" alt="weather icon" class="weather-icon">
+                    <p class="temperature">00</p>
+                </div>
+            </div>
+            
+            <div class="additional-section">
+                <div class="row">
+                    <div class="item">
+                        <div class="label">MT Mọc</div>
+                        <div class="value sunrise">0:00</div>
+                    </div>
+                    <div class="item">
+                        <div class="label">MT Lặn</div>
+                        <div class="value sunset">0:00</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="item">
+                        <div class="label">Độ ẩm</div>
+                        <div class="value"><span class="humidity">00</span>%</div>
+                    </div>
+                    <div class="item">
+                        <div class="label">Gió</div>
+                        <div class="value"><span class="wind-speed">0.00</span> km/h</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hint">
+            <div>Hint microphone: 1. Thời tiết tại + nơi chốn (Ex: thời tiết tại Sapa)</div>
+            <div>2. Thay đổi màu nền + color (Ex: thay đổi màu nền black)</div>
+            <div>3. Thay đổi màu nền mặc định</div>
+            <div>4. Hiện tại mấy giờ</div>
+        </div>
+        
+        <!-- Load external JavaScript -->
+        <script src="js/scripts.js"></script>
+        <script src="js/moment.js"></script>
+        <script src="js/all.min.js"></script>
+    </body>
+
+</html>
