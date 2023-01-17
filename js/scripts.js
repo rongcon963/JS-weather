@@ -34,7 +34,7 @@ searchInput.addEventListener('change', (e) => {
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
-const systh = window.SpeechSynthesis;
+const synth = window.speechSynthesis;
 
 recognition.lang = 'vi-VI';
 recognition.continuous = false;
@@ -42,8 +42,8 @@ recognition.continuous = false;
 const microphone = document.querySelector('.microphone');
 
 const speak = (text) => {
-    if (systh.speaking) {
-        console.log('Busy. Speaking ...');
+    if (synth.speaking) {
+        console.error('Busy. Speaking ...');
         return;
     }
 
@@ -57,14 +57,15 @@ const speak = (text) => {
         console.error('SpeechSynthesisUtterance.onerror', err);
     }
 
-    systh.speak(utter);
+    synth.speak(utter);
 };
 
 const handleVoice = (text) => {
     console.log('text', text);
 
+    // "thời tiết tại Đà Nẵng" => ["thời tiết tại", "Đà Nẵng"]
     const handleText  = text.toLowerCase();
-    if (handleText.include('Thời tiết tại')) {
+    if (handleText.includes('thời tiết tại')) {
         const location = handleText.split('tại')[1].trim();
 
         console.log('location', location);
@@ -74,19 +75,19 @@ const handleVoice = (text) => {
         return;
     }
 
-    if (handleText.include('thay đổi màu nền')) {
+    const container = document.querySelector('.container');
+    if (handleText.includes('thay đổi màu nền')) {
         const color = handleText.split('màu nền')[1].trim();
-        const container = document.querySelector('.container');
         container.style.background = color;
         return;
     }
 
-    if (handleText.include('màu nền mặc định')) {
+    if (handleText.includes('màu nền mặc định')) {
         container.style.background = '';
         return;
     }
 
-    if (handleText.include('mấy giờ')) {
+    if (handleText.includes('mấy giờ')) {
         const textToSpeech = `${moment().hours()} hours ${moment().minutes()} minutes`;
         speak(textToSpeech);
         return;
@@ -108,7 +109,7 @@ recognition.onspeechend = () => {
 }
 
 recognition.onerror = (err) => {
-    console.log(err);
+    console.error(err);
     microphone.classList.remove('recording');
 }
 
